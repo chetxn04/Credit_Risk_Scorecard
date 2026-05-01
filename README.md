@@ -168,7 +168,7 @@ Weight of Evidence (WoE) and Information Value (IV) are the standard feature eng
 
 For each bin $i$ of a feature:
 
-$$\text{WoE}_i = \ln\left(\frac{\% \text{Goods}_i}{\% \text{Bads}_i}\right)$$
+$$\text{WoE}_i = \ln\left(\frac{\%\ \text{Goods}_i}{\%\ \text{Bads}_i}\right)$$
 
 Where:
 - $\%\ \text{Goods}_i = \dfrac{\text{number of non-defaults in bin } i}{\text{total non-defaults}}$
@@ -198,7 +198,7 @@ WoE moves monotonically from +1.347 (Grade A, very safe) to -1.358 (Grade G, ver
 #### IV Formula
 
 
-$$\text{IV} = \sum_{i} \left(\% \text{Goods}_i - \% \text{Bads}_i\right) \times \text{WoE}_i$$
+$$\text{IV} = \sum_{i} \left(\%\ \text{Goods}_i - \%\ \text{Bads}_i\right) \times \text{WoE}_i$$
 
 | IV Range | Predictive Power |
 |----------|-----------------|
@@ -280,9 +280,7 @@ The full IV table from optbinning:
 
 **Model equation:**
 
-```
-log-odds = β₀ + β₁×WoE(sub_grade) + β₂×WoE(term) + ... + β₂₈×WoE(credit_history_months)
-```
+$$\log\text{-odds} = \beta_0 + \beta_1 \cdot \text{WoE}(\texttt{sub\_grade}) + \beta_2 \cdot \text{WoE}(\texttt{term}) + \cdots + \beta_{28} \cdot \text{WoE}(\texttt{credit\_history\_months})$$
 
 **A note on coefficient signs:**
 
