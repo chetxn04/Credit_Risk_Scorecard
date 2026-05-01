@@ -534,7 +534,7 @@ The dashboard will open at `http://localhost:8501`.
 
 ---
 
-## 9. Docker
+## 9. Docker (Upcoming)
 
 ### Build
 
