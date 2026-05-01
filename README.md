@@ -42,7 +42,7 @@ The pipeline covers every stage a production credit model goes through:
 - XGBoost as a challenger model for performance benchmarking
 - PDO scorecard scaling from log-odds to a 635–805 point scale
 - Out-of-time validation using Gini, KS, and PSI — all implemented from scratch in NumPy
-- Streamlit dashboard for interactive borrower scoring
+- [Streamlit Dashboard](#7-streamlit-dashboard) for interactive borrower scoring
 - Docker containerization
 
 
@@ -89,7 +89,7 @@ credit-risk-scorecard/
 │   ├── test_evaluate.py           ← Pytest tests for metrics
 │   └── test_scorecard.py          ← Pytest tests for scaling
 └── data/
-    ├── raw/                       ← Original LendingClub CSV (not tracked)
+    ├── raw/                       ← Original LendingClub CSV 
     └── processed/                 ← Cleaned datasets and model artifacts
         ├── train_selected.csv
         ├── test_selected.csv
