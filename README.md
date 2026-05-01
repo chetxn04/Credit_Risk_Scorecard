@@ -168,11 +168,11 @@ Weight of Evidence (WoE) and Information Value (IV) are the standard feature eng
 
 For each bin $i$ of a feature:
 
-$$\text{WoE}_i = \ln\left(\frac{\%\ \text{Goods}_i}{\%\ \text{Bads}_i}\right)$$
+$$\text{WoE}_i = \ln\left(\frac{p_{\text{Goods},i}}{p_{\text{Bads},i}}\right)$$
 
 Where:
-- $\%\ \text{Goods}_i = \dfrac{\text{number of non-defaults in bin } i}{\text{total non-defaults}}$
-- $\%\ \text{Bads}_i = \dfrac{\text{number of defaults in bin } i}{\text{total defaults}}$
+- $p_{\text{Goods},i} = \dfrac{\text{number of non-defaults in bin } i}{\text{total non-defaults}}$
+- $p_{\text{Bads},i} = \dfrac{\text{number of defaults in bin } i}{\text{total defaults}}$
 
 **Interpretation:**
 - WoE > 0 → bin has proportionally more goods than the overall population → lower default risk
