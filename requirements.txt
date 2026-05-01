@@ -78,7 +78,7 @@ notebook==7.5.5
 notebook_shim==0.2.4
 numpy==2.0.2
 optbinning==0.21.0
-ortools==9.11.4210
+ortools
 osqp==1.1.1
 overrides==7.7.0
 packaging==25.0
