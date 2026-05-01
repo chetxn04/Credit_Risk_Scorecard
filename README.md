@@ -280,7 +280,7 @@ The full IV table from optbinning:
 
 **Model equation:**
 
-$$\log\text{-odds} = \beta_0 + \beta_1 \cdot \text{WoE}(\texttt{sub\_grade}) + \beta_2 \cdot \text{WoE}(\texttt{term}) + \cdots + \beta_{28} \cdot \text{WoE}(\texttt{credit\_history\_months})$$
+$$\log\text{-odds} = \beta_0 + \beta_1 \cdot \text{WoE(sub\_grade)} + \beta_2 \cdot \text{WoE(term)} + \cdots + \beta_{28} \cdot \text{WoE(credit\_history\_months)}$$
 
 **A note on coefficient signs:**
 
