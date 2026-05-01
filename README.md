@@ -2,7 +2,7 @@
 ### End-to-End PD Modeling Pipeline on LendingClub Data
 
 **Author:** Chetan Maheshwari  
-**Stack:** Python · Logistic Regression · XGBoost · WoE/IV · PDO Scaling · Streamlit · Docker
+**Stack:** Python · Logistic Regression · XGBoost · WoE/IV · PDO Scaling · Streamlit 
 
 ---
 
@@ -24,7 +24,7 @@
 6. [Known Limitations and Honest Caveats](#6-known-limitations-and-honest-caveats)
 7. [Streamlit Dashboard](#7-streamlit-dashboard)
 8. [Running the Project](#8-running-the-project)
-9. [Docker](#9-docker-(upcoming))
+9. [Docker](#9-docker-upcoming)
 10. [References](#10-references)
 
 ---
@@ -486,6 +486,10 @@ Model validation dashboard:
 
 ### 📖 Glossary
 Comprehensive reference covering all terms, formulas, and concepts used in the scorecard — including WoE, IV, PDO, Gini, KS, PSI, FICO, DTI, multicollinearity sign reversal, and imputation methodology.
+
+### Link 
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_svg.svg)](https://lendingclubcreditriskscorecard.streamlit.app/)
 
 ---
 
