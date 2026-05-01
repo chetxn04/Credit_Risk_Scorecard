@@ -279,8 +279,9 @@ The full IV table from optbinning:
 2. **Scorecard conversion:** Logistic regression output (log-odds) maps directly to a points-based scorecard via PDO scaling. The math works because WoE + logistic regression produces log-odds that are linear and additive.
 
 **Model equation:**
-
-$$\log\text{-odds} = \beta_0 + \beta_1 \cdot \text{WoE(sub\_grade)} + \beta_2 \cdot \text{WoE(term)} + \cdots + \beta_{28} \cdot \text{WoE(credit\_history\_months)}$$
+```
+log-odds = β₀ + β₁·WoE(sub_grade) + β₂·WoE(term) + ... + β₂₈·WoE(credit_history_months)
+```
 
 **A note on coefficient signs:**
 
