@@ -5,6 +5,7 @@ import pickle
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 from src.scorecard import compute_scaling_params, probability_to_score
+from streamlit_option_menu import option_menu
 
 st.set_page_config(
     page_title="Credit Risk Scorecard",
@@ -48,6 +49,11 @@ st.markdown("""
     .glossary-term { font-family: 'IBM Plex Mono', monospace; color: #00c896; font-size: 1rem; font-weight: 600; }
     .glossary-def { color: #9ca3af; font-size: 0.9rem; margin-top: 0.4rem; line-height: 1.6; }
     .glossary-formula { font-family: 'IBM Plex Mono', monospace; color: #f5a623; font-size: 0.85rem; margin-top: 0.4rem; }
+    .page-title {
+        display: flex; align-items: center; gap: 0.75rem; /* Add this line */
+        font-family: 'IBM Plex Mono', monospace; color: #f4f1de; /* Change color to #f4f1de */
+        font-size: 1.8rem; font-weight: 600; margin-bottom: 0.5rem;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -107,17 +113,56 @@ if "initialized" not in st.session_state:
     st.session_state["inp_revol"] = 50.0
     st.session_state["inp_inq"] = 1
 
+ICON_SCORE = """<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e07a5f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>"""
+ 
+ICON_BREAKDOWN = """<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e07a5f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>"""
+ 
+ICON_PERFORMANCE = """<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e07a5f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>"""
+ 
+ICON_GLOSSARY = """<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e07a5f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>"""
+
 # --- Navigation -------------------------------------------------------------
-page = st.sidebar.selectbox(
-    "NAVIGATION",
-    ["🏦 Score Borrower", "📊 Score Breakdown", "📈 Model Performance", "📖 Glossary"]
-)
+from streamlit_option_menu import option_menu
+
+with st.sidebar:
+    page = option_menu(
+        menu_title=None,
+        options=["Score Borrower", "Score Breakdown", "Model Performance", "Glossary"],
+        # Updated icons to match the "Credit Risk" aesthetic
+        icons=["person-vcard", "layers-half", "activity", "journal-text"], 
+        default_index=0,
+        styles={
+            "container": {"padding": "0!important", "background-color": "transparent"},
+            "icon": {"color": "#f19808", "font-size": "18px"}, # Match your medium-risk orange
+            "nav-link": {
+                "font-family": "'IBM Plex Mono', monospace",
+                "font-size": "14px", 
+                "text-align": "left", 
+                "margin": "8px 0px", 
+                "color": "#9ca3af",
+                "--hover-color": "rgba(0, 200, 150, 0.1)" 
+            },
+            "nav-link-selected": {
+                "background-color": "#00c896", # Your low-risk green
+                "color": "#0a0f1e", # Dark text for contrast
+                "font-weight": "600",
+                "border-radius": "8px",
+                # The 3D Effect: Subtle bottom shadow instead of a border
+                "box-shadow": "0px 4px 0px 0px #008f6b", 
+                "transition": "none" 
+            },
+        }
+    )
 
 # ═══════════════════════════════════════════════════════════════
 # PAGE 1 — SCORE BORROWER
 # ═══════════════════════════════════════════════════════════════
-if page == "🏦 Score Borrower":
-    st.title("🏦 Credit Risk Scorecard")
+if page == "Score Borrower":
+    st.markdown(f'<div class="page-title">{ICON_SCORE} Credit Risk Scorecard</div>', unsafe_allow_html=True)
     st.caption("LendingClub PD Model — Logistic Regression + WoE Features")
 
     col_form, col_score = st.columns([1, 1])
@@ -172,7 +217,7 @@ if page == "🏦 Score Borrower":
             help="Lower bound of the borrower's FICO credit score range at origination. Range: 300 (worst) to 850 (best). See Glossary."
         )
 
-        home_options = ["ANY", "MORTGAGE", "NONE", "OTHER", "OWN", "RENT"]
+        home_options = ["ANY", "MORTGAGE", "OWN", "RENT", "OTHER", "NONE"]
         home_ownership = st.selectbox(
             "Home Ownership",
             options=home_options,
@@ -352,8 +397,8 @@ if page == "🏦 Score Borrower":
 # ═══════════════════════════════════════════════════════════════
 # PAGE 2 — SCORE BREAKDOWN
 # ═══════════════════════════════════════════════════════════════
-elif page == "📊 Score Breakdown":
-    st.title("📊 Score Breakdown")
+elif page == "Score Breakdown":
+    st.markdown(f'<div class="page-title">{ICON_BREAKDOWN} Score Breakdown</div>', unsafe_allow_html=True)
 
     if 'woe_row' not in st.session_state:
         st.warning("Please score a borrower first on the Score Borrower page.")
@@ -539,8 +584,8 @@ elif page == "📊 Score Breakdown":
 # ═══════════════════════════════════════════════════════════════
 # PAGE 3 — MODEL PERFORMANCE
 # ═══════════════════════════════════════════════════════════════
-elif page == "📈 Model Performance":
-    st.title("📈 Model Performance")
+elif page == "Model Performance":
+    st.markdown(f'<div class="page-title">{ICON_PERFORMANCE} Model Performance</div>', unsafe_allow_html=True)
 
     st.subheader("Validation Metrics")
     col1, col2, col3 = st.columns(3)
@@ -603,8 +648,8 @@ elif page == "📈 Model Performance":
 # ═══════════════════════════════════════════════════════════════
 # PAGE 4 — GLOSSARY
 # ═══════════════════════════════════════════════════════════════
-elif page == "📖 Glossary":
-    st.title("📖 Glossary")
+elif page == "Glossary":
+    st.markdown(f'<div class="page-title">{ICON_GLOSSARY} Glossary</div>', unsafe_allow_html=True)
     st.caption("Reference guide for all metrics, features, and concepts used in this scorecard.")
 
     glossary = [
