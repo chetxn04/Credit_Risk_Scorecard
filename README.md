@@ -198,7 +198,7 @@ WoE moves monotonically from +1.347 (Grade A, very safe) to -1.358 (Grade G, ver
 #### IV Formula
 
 
-$$\text{IV} = \sum_{i} \left(\%\ \text{Goods}_i - \%\ \text{Bads}_i\right) \times \text{WoE}_i$$
+$$\text{IV} = \sum_{i} \left(p_{\text{Goods},i} - p_{\text{Bads},i}\right) \times \text{WoE}_i$$
 
 | IV Range | Predictive Power |
 |----------|-----------------|
