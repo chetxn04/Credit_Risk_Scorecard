@@ -22,7 +22,7 @@
    - 4.8 [Validation Metrics](#48-validation-metrics)
 5. [Results](#5-results)
 6. [Known Limitations](#6-known-limitations)
-7. [Streamlit Dashboard](#7-streamlit-dashboard)
+7. [Streamlit Dashboard (Might not work due to GitHub LFS limit reached for the month))](#7-streamlit-dashboard)
 8. [Running the Project](#8-running-the-project)
 9. [Docker](#9-docker-upcoming)
 10. [References](#10-references)
