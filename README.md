@@ -21,7 +21,7 @@
    - 4.7 [XGBoost Challenger Model](#47-xgboost-challenger-model)
    - 4.8 [Validation Metrics](#48-validation-metrics)
 5. [Results](#5-results)
-6. [Known Limitations and Honest Caveats](#6-known-limitations-and-honest-caveats)
+6. [Known Limitations](#6-known-limitations)
 7. [Streamlit Dashboard](#7-streamlit-dashboard)
 8. [Running the Project](#8-running-the-project)
 9. [Docker](#9-docker-upcoming)
